@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+          body{
+             background-image: linear-gradient(rgba(0,0,0,0.6),rgba(0,0,0,0.6)),url(jok.jpg);
+            background-position: center;
+            background-size: cover;
+            width: 100%;
+            height: 100vh;
+            justify-content: space-between;
+            text-transform: uppercase;
+            background-color:#1C2833;
+         }
+         h1{
+            color: white;
+         }
+        .table{
+            display: table;
+            width:90%;
+            margin:10px auto;
+            background-color: bisque;
+            padding:10px;
+        }
+        .row{
+            display: table-row;
+            padding: 5px;
+            display: inline-flex;
+            justify-content: space-between;
+        }
+        .confirm{
+            padding:5px;
+        }
+    </style>
+</head>
+<body>
+    <center>
+    <h1>Librarian Page (To see the total bookings and confirm or cancel booking)</h1>
+    <div class="table">
+        <% bookings.forEach(function(booking){ %>
+        <div class="row">
+            <div><tr>User Who Booked The Book</tr></div>
+        </div>
+        <div class="row">
+            <div><tr><%= booking.book.name %></tr></div>
+        </div>    
+        <div class="row">
+            <div>
+                <tr> <a href="/api/librarian/book/renew/<%= booking.id %>"> <button class='confirm'>Renew</button> </a> </tr>
+                <tr> <a href="/api/librarian/book/return/<%= booking.id %>"> <button class='confirm'>Return</button> </a> </tr>
+            </div>
+        </div>
+        <% }) %>
+    </div>
+</center>
+</body>
+</html>
